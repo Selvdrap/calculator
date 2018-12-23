@@ -45,7 +45,7 @@ function Star(x,y,z){
 	  starX += starX_dir;
 	  starY += starY_dir;
 	  
-	  this.z += -2.5;
+	  this.z += -0.5;
 	  
 	  if(this.z <= 0){
 	     this.z = parseInt(innerWidth);
