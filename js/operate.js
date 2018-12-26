@@ -1,7 +1,3 @@
-const operate = function(fnName, args) {
-  return +format(getFunction(fnName)(...args), {precision: 14});
-}
-
 function add(a, b) {
   return a + b;
 }
@@ -20,6 +16,10 @@ function divide(a, b) {
 
 function square(a) {
   return a * a;
+}
+
+function cube(a) {
+  return a * a * a;
 }
 
 function squareRoot(a) {
@@ -58,7 +58,7 @@ function exp(a, b) {
   return a * pow10(b);
 }
 
-function modulus(a, b) {
+function mod(a, b) {
   return a % b;
 }
 
@@ -98,6 +98,10 @@ function epow(a) {
 
 function logn(a) {
   return Math.log(a);
+}
+
+const operate = function(fnName, args) {
+  return +format(getFunction(fnName)(...args), {precision: 18});
 }
 
 function format(result, options) {
