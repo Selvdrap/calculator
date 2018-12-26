@@ -8,7 +8,11 @@ const calculator = {
   },
 
   pushNumToStack: function(input) {
-    this.pushToStack(+input);
+    if(input < 0 && this.operators[this.operators.length - 1] === '-') {
+      this.pushToStack(Math.abs(+input));
+    } else {
+      this.pushToStack(+input);
+    }
   },
 
   pushFnToStack: function({name, text}) {
