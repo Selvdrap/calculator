@@ -48,7 +48,6 @@ canvas {
 .calculator {
   width: 600px;
   height: 800px;
-  max-height: 100%;
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 200px 1fr;
@@ -239,40 +238,40 @@ canvas {
   background: #ca3e49;
 }
 
-.cell:hover {
-  background: #424c70 radial-gradient(circle, transparent 1%, #424c70 1%) center/15000%;
+@media only screen and (min-width: 1600px) {
+  .cell:hover {
+    background: #424c70 radial-gradient(circle, transparent 1%, #424c70 1%) center/15000%;
+  }
+  .cell--prime:hover {
+    background: #5e6da0 radial-gradient(circle, transparent 1%, #5e6da0 1%) center/15000%;
+  }
+  .cell--sec:hover {
+    background: #d5666f radial-gradient(circle, transparent 1%, #d5666f 1%) center/15000%;
+  }
+  .cell:active {
+    background-color: #5e6ca0;
+    background-size: 100%;
+    -webkit-transition: background 0s;
+    transition: background 0s;
+  }
+  .cell--prime:active {
+    background-color: #8e98bd;
+    background-size: 100%;
+    -webkit-transition: background 0s;
+    transition: background 0s;
+  }
+  .cell--sec:active {
+    background-color: #e5a2a7;
+    background-size: 100%;
+    -webkit-transition: background 0s;
+    transition: background 0s;
+  }
 }
 
-.cell--prime:hover {
-  background: #5e6da0 radial-gradient(circle, transparent 1%, #5e6da0 1%) center/15000%;
-}
-
-.cell--sec:hover {
-  background: #d5666f radial-gradient(circle, transparent 1%, #d5666f 1%) center/15000%;
-}
-
-.cell:active {
-  background-color: #5e6ca0;
-  background-size: 100%;
-  -webkit-transition: background 0s;
-  transition: background 0s;
-}
-
-.cell--prime:active {
-  background-color: #8e98bd;
-  background-size: 100%;
-  -webkit-transition: background 0s;
-  transition: background 0s;
-}
-
-.cell--sec:active {
-  background-color: #e5a2a7;
-  background-size: 100%;
-  -webkit-transition: background 0s;
-  transition: background 0s;
-}
-
-sup, small {
-  font-size: 17px;
+@media only screen and (width: 1366px) {
+  .calculator {
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
 }
 /*# sourceMappingURL=main.css.map */

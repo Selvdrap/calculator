@@ -45,7 +45,6 @@ canvas {
 .calculator {
   width: 600px;
   height: 800px;
-  max-height: 100%;
   display: grid;
   grid-template-rows: 200px 1fr;
   border-radius: 5px;
@@ -209,31 +208,35 @@ canvas {
   }
 }
 
-.cell:hover {
-  background: lighten($darkblue, 10%) radial-gradient(circle, transparent 1%, lighten($darkblue, 10%) 1%) center/15000%;
-}
-.cell--prime:hover {
-  background: lighten($blue, 10%) radial-gradient(circle, transparent 1%, lighten($blue, 10%) 1%) center/15000%;
-}
-.cell--sec:hover {
-  background: lighten($red, 10%) radial-gradient(circle, transparent 1%, lighten($red, 10%) 1%) center/15000%;
-}
-.cell:active {
-  background-color: lighten($darkblue, 25%);
-  background-size: 100%;
-  transition: background 0s;
-}
-.cell--prime:active {
-  background-color: lighten($blue, 25%);
-  background-size: 100%;
-  transition: background 0s;
-}
-.cell--sec:active {
-  background-color: lighten($red, 25%);
-  background-size: 100%;
-  transition: background 0s;
+@media only screen and (min-width: 1600px) {
+  .cell:hover {
+    background: lighten($darkblue, 10%) radial-gradient(circle, transparent 1%, lighten($darkblue, 10%) 1%) center/15000%;
+  }
+  .cell--prime:hover {
+    background: lighten($blue, 10%) radial-gradient(circle, transparent 1%, lighten($blue, 10%) 1%) center/15000%;
+  }
+  .cell--sec:hover {
+    background: lighten($red, 10%) radial-gradient(circle, transparent 1%, lighten($red, 10%) 1%) center/15000%;
+  }
+  .cell:active {
+    background-color: lighten($darkblue, 25%);
+    background-size: 100%;
+    transition: background 0s;
+  }
+  .cell--prime:active {
+    background-color: lighten($blue, 25%);
+    background-size: 100%;
+    transition: background 0s;
+  }
+  .cell--sec:active {
+    background-color: lighten($red, 25%);
+    background-size: 100%;
+    transition: background 0s;
+  }
 }
 
-sup, small {
-  font-size: 17px;
+@media only screen and (width: 1366px) {
+  .calculator {
+    transform: scale(0.9);
+  }
 }
