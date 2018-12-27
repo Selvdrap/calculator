@@ -100,6 +100,14 @@ function logn(a) {
   return Math.log(a);
 }
 
+function truncate(a) {
+  return Math.trunc(a);
+}
+
+function round(a) {
+  return a.toFixed(2);
+}
+
 const operate = function(fnName, args) {
   return +format(getFunction(fnName)(...args), {precision: 30});
 }
