@@ -190,10 +190,20 @@ function eqClickHandler() {
   calculated = true;
 }
 
-function addSwitchBtnListener() {
+function addSwitchBtnHandler() {
   const typeBtn = document.querySelector('#typeSwitch');
   typeBtn.checked = true;
   typeBtn.addEventListener('change', () => switchType(typeBtn));
+}
+
+
+function addKeyHandlers() {
+  document.addEventListener('keyup', (e) => {
+    const obj = keyBtns.find(key => key.keyCode === e.key);
+    if(!obj) return;
+    const btn = [...keypad.children].find(key => key.value === obj.name);
+    btn.click(); 
+  });
 }
 
 
@@ -212,32 +222,32 @@ function addHandlers() {
 }
 
 const keyBtns = [
-  {name: '0', text: '0', classes: ['cell', 'num'], order: [22, 33]},
-  {name: '1', text: '1', classes: ['cell', 'num'], order: [17, 27]},
-  {name: '2', text: '2', classes: ['cell', 'num'], order: [18, 28]},
-  {name: '3', text: '3', classes: ['cell', 'num'], order: [19, 29]},
-  {name: '4', text: '4', classes: ['cell', 'num'], order: [13, 22]},
-  {name: '5', text: '5', classes: ['cell', 'num'], order: [14, 23]},
-  {name: '6', text: '6', classes: ['cell', 'num'], order: [15, 24]},
-  {name: '7', text: '7', classes: ['cell', 'num'], order: [9, 17]},
-  {name: '8', text: '8', classes: ['cell', 'num'], order: [10, 18]},
-  {name: '9', text: '9', classes: ['cell', 'num'], order: [11, 19]},
-  {name: '.', text: '.', classes: ['cell', 'num'], order: [23, 34]},
+  {name: '0', text: '0', classes: ['cell', 'num'], order: [22, 33], keyCode: '0'},
+  {name: '1', text: '1', classes: ['cell', 'num'], order: [17, 27], keyCode: '1'},
+  {name: '2', text: '2', classes: ['cell', 'num'], order: [18, 28], keyCode: '2'},
+  {name: '3', text: '3', classes: ['cell', 'num'], order: [19, 29], keyCode: '3'},
+  {name: '4', text: '4', classes: ['cell', 'num'], order: [13, 22], keyCode: '4'},
+  {name: '5', text: '5', classes: ['cell', 'num'], order: [14, 23], keyCode: '5'},
+  {name: '6', text: '6', classes: ['cell', 'num'], order: [15, 24], keyCode: '6'},
+  {name: '7', text: '7', classes: ['cell', 'num'], order: [9, 17], keyCode: '7'},
+  {name: '8', text: '8', classes: ['cell', 'num'], order: [10, 18], keyCode: '8'},
+  {name: '9', text: '9', classes: ['cell', 'num'], order: [11, 19], keyCode: '9'},
+  {name: '.', text: '.', classes: ['cell', 'num'], order: [23, 34], keyCode: '.'},
   {name: 'negate', text: '±', classes: ['cell', 'fn'], order: [21, 26], arity: 1},
-  {name: 'deleteOne', text: '⌫', classes: ['cell', 'cell--sec', 'input-fn'], order: [7, 14]},
-  {name: 'clearAll', text: 'C', classes: ['cell', 'cell--sec', 'input-fn'], order: [6, 13]},
-  {name: 'clearInput', text: 'CE', classes: ['cell', 'cell--sec', 'input-fn'], order: [5, 12]},
-  {name: 'add', text: '+', classes: ['cell', 'cell--prime', 'fn'], order: [20, 30], arity: 2},
-  {name: 'subtract', text: '-', classes: ['cell', 'cell--prime', 'fn'], order: [16, 25], arity: 2},
-  {name: 'multiply', text: '*', classes: ['cell', 'cell--prime', 'fn'], order: [12, 20], arity: 2},
-  {name: 'divide', text: '÷', classes: ['cell', 'cell--prime', 'fn'], order: [8, 15], arity: 2},
+  {name: 'deleteOne', text: '⌫', classes: ['cell', 'cell--sec', 'input-fn'], order: [7, 14], keyCode: 'Backspace'},
+  {name: 'clearAll', text: 'C', classes: ['cell', 'cell--sec', 'input-fn'], order: [6, 13], keyCode: 'Delete'},
+  {name: 'clearInput', text: 'CE', classes: ['cell', 'cell--sec', 'input-fn'], order: [5, 12], keyCode: '_'},
+  {name: 'add', text: '+', classes: ['cell', 'cell--prime', 'fn'], order: [20, 30], arity: 2, keyCode: '+'},
+  {name: 'subtract', text: '-', classes: ['cell', 'cell--prime', 'fn'], order: [16, 25], arity: 2, keyCode: '-'},
+  {name: 'multiply', text: '*', classes: ['cell', 'cell--prime', 'fn'], order: [12, 20], arity: 2, keyCode: '*'},
+  {name: 'divide', text: '÷', classes: ['cell', 'cell--prime', 'fn'], order: [8, 15], arity: 2, keyCode: '/'},
   {name: 'inv', text: 'INV', classes: ['cell', 'cell--sec', 'input-fn'], order: [, 11]},
   {name: 'PI', text: 'π', classes: ['cell', 'cell-prime', 'const'], order: [, 16]},
-  {name: 'openParenthesis', text: '(', classes: ['cell', 'input-fn'], order: [, 31]},
-  {name: 'closeParenthesis', text: ')', classes: ['cell', 'input-fn'], order: [, 32]},
+  {name: 'openParenthesis', text: '(', classes: ['cell', 'input-fn'], order: [, 31], keyCode: '('},
+  {name: 'closeParenthesis', text: ')', classes: ['cell', 'input-fn'], order: [, 32], keyCode: ')'},
   {name: 'factorial', arity: 1, text: 'n!', expr: 'fact', classes: ['cell', 'fn'], order: [, 21]},
 
-  {name: 'equals', text: '=', classes: ['cell', 'cell--prime', 'eq'], order: [24, 35], arity: 1},
+  {name: 'equals', text: '=', classes: ['cell', 'cell--prime', 'eq'], order: [24, 35], arity: 1, keyCode: 'Enter'},
   {name: 'square', text: 'x²', expr: 'sqr', classes: ['cell', 'cell--sec', 'fn'], display: true, order: [2, 1], arity: 1},
   {name: 'squareRoot', text: '√', expr: '√', classes: ['cell', 'cell--sec', 'fn'], display: true, order: [1, 6], arity: 1},
   {name: 'mod', text: 'mod', classes: ['cell', 'cell--sec', 'fn'], display: true, order: [, 10], arity: 2},
@@ -262,4 +272,5 @@ const keyBtns = [
 ];
 
 main();
-addSwitchBtnListener();
+addSwitchBtnHandler();
+addKeyHandlers();

@@ -11,7 +11,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  return a / b;
+  return b == 0 ? 'ERROR' : a / b;
 }
 
 function square(a) {
@@ -77,7 +77,7 @@ function cube(a) {
 }
 
 function yroot(a, b) {
-  return Math.pow(b, 1/a);
+  return Math.pow(a, 1/b);
 }
 
 function arcsine(a) {
@@ -101,7 +101,7 @@ function logn(a) {
 }
 
 const operate = function(fnName, args) {
-  return +format(getFunction(fnName)(...args), {precision: 18});
+  return +format(getFunction(fnName)(...args), {precision: 30});
 }
 
 function format(result, options) {
