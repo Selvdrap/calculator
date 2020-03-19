@@ -109,7 +109,7 @@ function round(a) {
 }
 
 const operate = function(fnName, args) {
-  return +format(getFunction(fnName)(...args), {precision: 30});
+  return +format(getFunction(fnName)(...args), {precision: 20});
 }
 
 function format(result, options) {
